@@ -1,25 +1,41 @@
-# 📈 ET MoneyMentor Pro
+# ET MoneyMentor Pro ✨
 
-ET MoneyMentor Pro is an advanced, multi-agent Mutual Fund Portfolio X-Ray engine built for the **Economic Times AI Hackathon**. Powered by LangGraph and Gemini 2.5 Flash, it autonomously decodes complex CAMS/KFintech Consolidated Account Statements (CAS), calculates true Extended Internal Rate of Return (XIRR) via `pyxirr`, and generates highly personalized rebalancing strategies against trailing market benchmarks.
+<p align="center">
+  <a href="https://calyx-et-moneymentor.streamlit.app/" target="_blank">
+    <img src="https://raw.githubusercontent.com/Naman-GG/Mutual-Fund-X-Ray/main/qr_code.png" alt="QR Code - ET MoneyMentor Pro" width="200" />
+  </a>
+  <br><br>
+  <a href="https://calyx-et-moneymentor.streamlit.app/" target="_blank"><strong><big><big>Click Here To Try The Live App</big></big></strong></a>
+</p>
+
+<br>
+
+The model is live and accessible at: **https://calyx-et-moneymentor.streamlit.app/**
+
+ET MoneyMentor Pro is an accessible, highly friendly, and extremely powerful **Open-Source AI Portfolio Mentor** built for the **Economic Times AI Hackathon**. 
+
+It completely abandons the intimidating, hyper-technical "FinTech" aesthetic found in most apps. Instead, it offers a "WhatsApp-style", soft, and genuinely approachable experience for everyday investors. Under the hood, it is powered by a multi-agent **LangGraph** workflow driving Meta's **Llama-3**, backed by real-time high-speed data from **mfapi.in**, and even includes native Voice-to-Portfolio audio transcription powered by **Whisper-Large-v3**!
+
+---
 
 ## 🚀 Key Features
 
-*   **Agentic Pipeline**: Employs a multi-actor LangGraph state machine (Extractor -> Analyst -> Strategist) to divide and conquer financial intelligence logic.
-*   **CAS Native Decryption**: Upload and securely decrypt CAMS/KFintech PDFs locally using the `casparser` engine without exposing raw data to the cloud.
-*   **Algorithmic XIRR**: Traverses your precise transaction-level cash flows matched with high-speed Rust-based XIRR calculations to calculate your true trailing returns.
-*   **Pro-Max UI Engine**: Built on local Streamlit but deeply injected with strict UI/UX Pro Max glassmorphism structural laws, ensuring an elite tracking experience.
-*   **Overlap Detection**: Automatically alerts you to dangerous duplicate underlying stock overheads disguised across varying mutual fund wrapper names.
+*   **🎙️ Voice-To-Portfolio (Whisper V3)**: Users don't even need to type! Simply click the microphone, narrate your investment history naturally (e.g. *"Uh, I bought 50k of SBI Bluechip back in Jan..."*), and Groq's insanely fast Whisper endpoint will transcribe and securely process it. 
+*   **🤖 LangGraph Llama-3 Engine**: Replaces proprietary APIs completely. Uses 100% open-source Llama-3-8B (via Groq) to intelligently parse incredibly messy human text or audio into formal mathematical Python data structures.
+*   **📡 Real-Time Live Valuations**: Directly integrates with the open-source `mfapi.in` network. When a user provides an investment date, the Analyst Agent literally travels back in time to fetch the exact historical NAV, pulls today's live NAV, and mathematically calculates the True XIRR!
+*   **🧸 Ultra-Friendly "Cute" UI**: Built on Quicksand typography, pillowed CSS metric cards, and bubblegum pastel colors (`#B8DB80`, `#F7DB91`, `#FD7979`). It strips away financial anxiety and feels like texting a smart, safe mentor.
+*   **💬 Contextual Co-Pilot Chatbot**: After generating your report, you can chat with the AI endlessly below the dashboard without losing your data! The AI strictly operates under legal "Educational Mentor" guardrails, refusing to give explicit investing advice.
+*   **🧠 Algorithmic Auto-Corrector**: Employs built-in Python `difflib` semantic auto-correct to instantly catch and repair spelling mistakes in mutual fund names (e.g. converting "Axis Mid" to "Axis Midcap" seamlessly) before querying live APIs.
 
 ---
 
 ## 🛠️ Local Installation & Setup
 
-Follow these steps exactly to deploy ET MoneyMentor Pro optimally on your local machine.
+Deploying the open-source ET MoneyMentor Pro is incredibly straightforward!
 
 ### 1. Clone the Repository
-Clone the project directly from GitHub and enter the local directory.
 ```bash
-git clone <your-repository-url>
+git clone https://github.com/Naman-GG/Mutual-Fund-X-Ray.git
 cd Mutual-Fund-X-Ray
 ```
 
@@ -39,15 +55,15 @@ python -m venv .venv
 ```
 
 ### 3. Install Required Dependencies
-Install all the necessary backend packages (`streamlit`, `langgraph`, `casparser`, `pyxirr`, etc.).
+All underlying packages (`streamlit`, `langgraph`, `casparser`, `requests`, `groq`, etc.) are bundled cleanly.
 ```bash
 pip install -r requirements.txt
 ```
 
 ### 4. Configure Environment Variables
-The overarching AI Strategist requires a modern **Gemini API Key**.
+This project utilizes **Groq's LPU** infrastructure for near-instant Llama-3 & Whisper generation.
 
-1. Copy the provided environment template to a functional `.env` file:
+1. Open your terminal and copy the provided environment template to a functional `.env` file:
    **macOS / Linux:**
    ```bash
    cp .env.example .env
@@ -57,23 +73,45 @@ The overarching AI Strategist requires a modern **Gemini API Key**.
    copy .env.example .env
    ```
 
-2. Open the new `.env` file and replace the placeholder text with your actual generated API key. You can generate a free key instantly from [Google AI Studio](https://aistudio.google.com/app/apikey):
+2. Open the new `.env` file and replace the placeholder text with your actual **Groq API Key**:
+   *(You can generate a free, lightning-fast key instantly from [GroqCloud Console](https://console.groq.com/keys))*
    ```env
-   GOOGLE_API_KEY="AIzaSy...your_actual_key..."
+   GROQ_API_KEY="gsk_your_actual_key_here..."
    ```
 
-### 5. Launch the Engine
-Boot the Streamlit Application Server.
+### 5. Launch the Mentor!
+Initialize the Streamlit Server and your dashboard will immediately boot natively in Light Mode.
 ```bash
 streamlit run app.py
 ```
-> The application will automatically execute and bridge to your default web browser at `http://localhost:8501`.
+> The application will automatically bridge to your default web browser at `http://localhost:8501`.
 
 ---
 
-## 📂 Architecture Overview
-*   **`app.py`**: The Streamlit interface, Glassmorphism CSS, and Flexbox metric architecture.
-*   **`workflow.py`**: Constructs and orchestrates the LangGraph Directed Acyclic Graph.
-*   **`agents.py`**: The underlying brains containing all Gemini LLM structured parsing, `pyxirr` analytics, and evaluation logic.
-*   **`schema.py`**: Defines strict Pydantic typed-schemas protecting the data flow between arbitrary AI agents.
-*   **`market_data.csv`**: A local snapshot database containing mappings of over 50+ leading Indian Mutual Funds spanning various market caps.
+## 📜 Development Commit History
+
+The following chronological sequence maps the overarching build process for the ET Hackathon from our initial dark-mode proprietary prototype to our fully open-source, conversational final submission:
+
+* **`feat: initialized project architecture`** 
+  * Bootstrapped the initial 3-node LangGraph logic (Extractor, Analyst, Strategist).
+* **`chore: pivot from Closed-Source Gemini to Open-Source Llama-3`**
+  * Swapped `langchain-google-genai` for `langchain-groq`.
+  * Rewrote extraction prompt logic to handle Llama-3's specific parsing semantics.
+* **`feat: integrate real-time API (mfapi.in) for true historical NAV lookups`**
+  * Ditched the static mock values; the Analyst agent now loops through `investments`, detects `investment_date`, and calculates true portfolio growth mathematically against live market data.
+* **`fix: repair Llama-3 Extractor matching hallucination`**
+  * Handled Edge Cases where user typing (or Llama-3 output) merged spacings (e.g., "FlexiCap" instead of "Flexi Cap"). Added a resilient standard-library `difflib.get_close_matches` semantic auto-checker.
+* **`ui: overhaul aesthetics to 'Cute & Approachable' Custom CSS Light Theme`**
+  * Completely removed "Pro-Max Cyber" aesthetics. Implemented `[theme]` inside `.streamlit/config.toml` to force a warm, creamy `#FFFDF8` backdrop.
+  * Replaced Fira Code typography with friendly, bubbly `Quicksand`.
+  * Injected native deep-Crimson (`#DB1A1A`) ET branding for typography hits, alongside a beautifully preserved Pastel Pie-Chart sequences (`#B8DB80`, `#F7DB91`, `#FD7979`).
+* **`feat: engineered the 'Ask Your AI Finance Mentor' contextual chatbot`**
+  * Appended a native persistent chat-bot at the bottom of the page.
+  * Separated Streamlit render execution into a robust `st.session_state` cache so users can chat without the Streamlit `run_workflow` wiping their dashboard.
+  * Bolstered System Prompt Constraints: Enforced strict "Educational-Only" guardrails so the mentor doesn't illegally provide explicit financial buy/sell advice.
+* **`feat: mount Whisper-V3 Voice-to-Portfolio recording engine`**
+  * Implemented Streamlit's cutting edge `st.audio_input` for zero-friction user narration.
+  * Handled dynamic buffer intercept to `.wav` translation, firing off asynchronous transcriptions to `whisper-large-v3` with sub-1-second audio decoding. 
+* **`fix: Streamlit Cloud native CSS bypass` (*latest*)**
+  * Repaired an issue where `.streamlit/` was ignored by git, depriving the Streamlit server of the Light-Mode CSS sequence.
+  * Explicitly embedded the "Made with ❤️ by Team Calyx" watermark signature onto the deployment dashboard directly matching the UI schema!

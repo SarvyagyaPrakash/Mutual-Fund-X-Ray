@@ -5,6 +5,7 @@ from pydantic import BaseModel, Field
 class Investment(BaseModel):
     fund_name: str = Field(description="Name of the mutual fund")
     amount: float = Field(description="Total Invested amount")
+    investment_date: Optional[str] = Field(default=None, description="Date of investment in DD-MM-YYYY format if specified")
     current_value: Optional[float] = Field(default=None, description="Current valuation (only via CAS)")
     xirr: Optional[float] = Field(default=None, description="Individual fund XIRR (only via CAS)")
     sector: Optional[str] = Field(default=None, description="Primary sector, e.g., Financials, Technology")
