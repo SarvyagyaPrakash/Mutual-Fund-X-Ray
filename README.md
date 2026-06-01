@@ -1,4 +1,4 @@
-# ET MoneyMentor Pro ✨
+# MoneyMentor Pro ✨
 
 <p align="center">
   <a href="https://calyx-et-moneymentor.streamlit.app/" target="_blank">
